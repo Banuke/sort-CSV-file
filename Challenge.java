@@ -45,7 +45,7 @@ public class Challenge {
 
 	public static ArrayList<csvClass> convertToListedData(ArrayList<String> Lines) {
     ArrayList<csvClass> data = new ArrayList<>(); // array list of csvClass type
-    Lines.remove(0); // remove the heading column
+    Lines.remove(0); // remove the heading row
     for(String each : Lines) {
         String[] divided = each.split(",");
         for(int i =0; i<divided.length;i++) {
@@ -73,6 +73,7 @@ public class Challenge {
         Integer column = Integer.valueOf(divided[16]);
         Integer row = Integer.valueOf(divided[17]);
         
+	    //send the obtained values to the data list
         data.add(new csvClass( ENTRY_TYPE,  PlantingDate,  GID, DESIGNATION,  ENTRY_NO, 
         		EH_cm, PH_cm,  DTA_days__obs,DTS_days__obs, Moi_pct__STD, GW_g__FieldWB,  
         		EarsHvst_ears_plot,RLodg_pl_plot,  SLodg_pl_plot,  REP_NO,PLOT_NO,  column, row));
@@ -81,7 +82,6 @@ public class Challenge {
     Collections.sort(data,new Comparator<csvClass>() {
         @Override
         public int compare(csvClass o1, csvClass o2) {
-        	//System.out.println("==" + o1.compareTo(o2) + " \n"+o1+" \n"+o2);
             return o1.compareTo(o2);
         } 
     });
